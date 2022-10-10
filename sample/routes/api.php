@@ -26,10 +26,10 @@ Route::group(["middleware" => "api"], function () {
     Route::post('register', 'Auth\RegisterController@register');
     
     // onlyを使う方法
-    Route::resource('todos', 'TodoController', ['only' => ['index', 'create', 'destroy']]);
-
+    Route::resource('todos', 'TodoController', ['only' => ['index', 'destroy']]);
     // exceptを使う方法
     Route::resource('todos', 'TodoController', ['except' => ['show', 'update']]);
+    Route::put('todos/{id}', 'TodoController@update');
 
     Route::group(['middleware' => ['jwt.auth']], function () {
         // 認証が必要なメソッド

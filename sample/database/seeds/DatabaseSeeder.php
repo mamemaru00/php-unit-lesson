@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Models\User;
+use App\Models\Todo;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,5 +15,6 @@ class DatabaseSeeder extends Seeder
     {
 
         factory(User::class, 5)->create();
+        factory(Todo::class, 5)->create();
     }
 }

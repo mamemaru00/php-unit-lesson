@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class Todo extends Model
+class Todo extends Authenticatable implements JWTSubject
 {
     use Notifiable;
 

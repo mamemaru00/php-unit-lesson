@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Todo;
+use App\Models\User;
 
 class TodoController extends Controller
 {
@@ -14,10 +15,10 @@ class TodoController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = Todo::all();
         if ($users->isEmpty()) return response()->json(null, 404);
 
-        return response()->json(User::all(), 200);
+        return response()->json(Todo::all(), 200);
     }
 
     /**
@@ -28,7 +29,7 @@ class TodoController extends Controller
      */
     public function show($id)
     {
-        $user = User::find($id);
+        $user = Todo::find($id);
         if (is_null($user)) return response()->json(null, 404);
 
         return response()->json([
@@ -49,7 +50,7 @@ class TodoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::find($id);
+        $user = Todo::find($id);
         if (is_null($user)) return response()->json(null, 404);
 
         $user->name = $request->input('name');
@@ -67,10 +68,10 @@ class TodoController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::find($id);
+        $user = Todo::find($id);
         if (is_null($user)) return response()->json(null, 404);
 
-        User::find($id)->delete();
+        Todo::find($id)->delete();
         return response()->json(null, 204);
     }
 }
